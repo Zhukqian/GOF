@@ -1,6 +1,13 @@
 package Single;
 
+/**
+ * @ClassName LazySingle
+ * @Description 懒汉式单例
 
+ * @Author zhukq
+ * @Date 2020/3/23 10:12
+ * @Version 1.0
+ */
 //懒汉式安全
 public class LazySingle {
 
