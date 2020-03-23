@@ -13,7 +13,7 @@ public class Test {
         //System.out.println(mi.makePhone().makePhone());
 
 
-        //抽象工厂模式(Abstract Factory) 可以添加产品,手机,电脑
+        //3:抽象工厂模式(Abstract Factory) 可以添加产品,手机,电脑
         AbstractFactory miAll = new MiFactory();
         System.out.println( miAll.makePC().makePC());
     }
