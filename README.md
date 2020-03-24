@@ -60,7 +60,7 @@
 [模版方法模式](https://github.com/Zhukqian/GOF#9-模板方法模式),[命令模式](https://github.com/Zhukqian/GOF#6-命令模式),[迭代器模式](https://github.com/Zhukqian/GOF#17-迭代器模式),[观察者模式](https://github.com/Zhukqian/GOF#1-观察者模式),[中介者模式](https://github.com/Zhukqian/GOF#18-中介者模式),[备忘录模式](https://github.com/Zhukqian/GOF#19-备忘录模式),[解释器模式](https://github.com/Zhukqian/GOF#20-解释器模式),[状态模式](https://github.com/Zhukqian/GOF#10-状态模式),[策略模式](https://github.com/Zhukqian/GOF#4-策略模式),[责任链模式](https://github.com/Zhukqian/GOF#21-责任链模式),[访问者模式](https://github.com/Zhukqian/GOF#22-访问者模式)
 
 
-### 1.单例模式
+### 1. 单例模式
 
 单例模式，顾名思义就是 一个类只能有一个实例，并且在整个项目中都能访问到这个实例。
 主要是为了避免因为创建了多个实例造成资源的浪费，且多个实例由于多次调用容易导致结果出现错误.
@@ -84,7 +84,7 @@
 都安全,可用
 
 
-### 2.工厂模式
+### 2. 工厂模式
 
 工厂顾名思义就是创建产品，根据产品是具体产品还是具体工厂可分为简单工厂模式和工厂方法模式，根据工厂的抽象程度可分为工厂方法模式和抽象工厂模式。该模式用于封装和管理对象的创建，是一种创建型模式。本文从一个具体的例子逐步深入分析，来体会三种工厂模式的应用场景和利弊。
 
@@ -122,7 +122,7 @@
 
 - 工厂模式测试类:   [Test](https://github.com/Zhukqian/GOF/blob/master/src/main/java/FactortModel/Test.java)
 
-### 3.建造者模式
+### 3. 建造者模式
 
 建造者模式（Builder Pattern）使用多个简单的对象一步一步构建成一个复杂的对象。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。
 一个 Builder 类会一步一步构造最终的对象。该 Builder 类是独立于其他对象的。
@@ -156,7 +156,7 @@
 
 -  建造者代码  [BuiderPatternDemo](https://github.com/Zhukqian/GOF/blob/master/src/main/java/Builder/BuiderPatternDemo.java)
 
-### 4.原型模式
+### 4. 原型模式
 
 原型模式（Prototype Pattern）是用于创建重复的对象，同时又能保证性能。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。
 
