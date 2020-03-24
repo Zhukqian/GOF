@@ -50,7 +50,7 @@
 
 总共有 23 种设计模式。这些模式可以分为三大类：
 
-创建型模式（Creational Patterns）:
+ - **创建型模式**（Creational Patterns）:
 [单例模式](https://github.com/Zhukqian/GOF#1-单例模式),[工厂模式](https://github.com/Zhukqian/GOF#2-工厂模式),[抽象工厂模式](https://github.com/Zhukqian/GOF#2-工厂模式),[建造者模式](https://github.com/Zhukqian/GOF#3-建造者模式),[原型模式](https://github.com/Zhukqian/GOF#4-原型模式)。
 
 结构型模式（Structural Patterns）:
