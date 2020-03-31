@@ -335,6 +335,143 @@ public abstract class AbstractHandlerMethodAdapter extends WebContentGenerator i
 
 - 适配器模式代码::[AdapterDemo](https://github.com/Zhukqian/GOF/blob/master/src/main/java/Adapter/AdapterDemo.java)
 
+###  6. 桥接模式
+
+将抽象部分与它的实现部分分离，使他们都可以独立地变化。(主要就是做出一个桥接类连接)就像一个桥，将两个变化维度连接起来。各个维度都可以独立的变化。故称之为：桥接模式
+
+意图：将抽象部分与实现部分分离，使它们都可以独立的变化。
+
+主要解决：在有多种可能会变化的情况下，用继承会造成类爆炸问题，扩展起来不灵活。
+
+何时使用：实现系统可能有多个角度分类，每一种角度都可能变化。
+
+如何解决：把这种多角度分类分离出来，让它们独立变化，减少它们之间耦合。
+
+关键代码：抽象类依赖实现类。
+
+应用实例： 1、猪八戒从天蓬元帅转世投胎到猪，转世投胎的机制将尘世划分为两个等级，即：灵魂和肉体，前者相当于抽象化，后者相当于实现化。生灵通过功能的委派，调用肉体对象的功能，使得生灵可以动态地选择。 2、墙上的开关，可以看到的开关是抽象的，不用管里面具体怎么实现的。
+
+优点： 1、抽象和实现的分离。 2、优秀的扩展能力。 3、实现细节对客户透明。
+
+缺点：桥接模式的引入会增加系统的理解与设计难度，由于聚合关联关系建立在抽象层，要求开发者针对抽象进行设计与编程。
+
+使用场景： 1、如果一个系统需要在构件的抽象化角色和具体化角色之间增加更多的灵活性，避免在两个层次之间建立静态的继承联系，通过桥接模式可以使它们在抽象层建立一个关联关系。 2、对于那些不希望使用继承或因为多层次继承导致系统类的个数急剧增加的系统，桥接模式尤为适用。 3、一个类存在两个独立变化的维度，且这两个维度都需要进行扩展。
+
+注意事项：对于两个独立变化的维度，使用桥接模式再适合不过了。
+
+![](https://www.runoob.com/wp-content/uploads/2014/08/bridge_pattern_uml_diagram.jpg)
+
+- 桥接模式代码::[AdapterDemo](https://github.com/Zhukqian/GOF/blob/master/src/main/java/Bridge/BridgePatternDemo.java)
+
+
+###  7. 装饰者模式
+
+装饰者模式定义：在不改变原有对象的基础上附加功能，相比生成子类更灵活。(可代替继承。)  装饰模式的核心在于抽象装饰类的设计。
+
+主要解决：一般的，我们为了扩展一个类经常使用继承方式实现，由于继承为类引入静态特征，并且随着扩展功能的增多，子类会很膨胀。
+
+何时使用：在不想增加很多子类的情况下扩展类。
+
+如何解决：将具体功能职责划分，同时继承装饰者模式。
+
+关键代码： 1、Component 类充当抽象角色，不应该具体实现。 2、修饰类引用和继承 Component 类，具体扩展类重写父类方法。 
+
+应用实例： 1、孙悟空有 72 变，当他变成"庙宇"后，他的根本还是一只猴子，但是他又有了庙宇的功能。 2、不论一幅画有没有画框都可以挂在墙上，但是通常都是有画框的，并且实际上是画框被挂在墙上。在挂在墙上之前，画可以被蒙上玻璃，装到框子里；这时画、玻璃和画框形成了一个物体。
+
+优点：装饰类和被装饰类可以独立发展，不会相互耦合，装饰模式是继承的一个替代模式，装饰模式可以动态扩展一个实现类的功能。
+
+缺点：多层装饰比较复杂。
+
+使用场景： 1、扩展一个类的功能。 2、动态增加功能，动态撤销。
+
+装饰模式为已有类动态附加额外的功能就像LOL、王者荣耀等类Dota游戏中，英雄升级一样。每次英雄升级都会附加一个额外技能点学习技能。具体的英雄就是ConcreteComponent，技能栏就是装饰器Decorator，每个技能就是ConcreteDecorator；
+
+源码中的装饰者模式:
+
+1:Java IO中是体现最明显的装饰者模式。
+
+它基于字符流(InputStream/OutputStream) 和 字节流(Reader/Writer)作为基类，下面画出InputStream、Reader的部分类图：
+
+![](https://oscimg.oschina.net/oscnet/3ba53d1aecb061c1476982271cf3337f000.jpg)
+
+2:Spring Session中的ServletRequestWrapper（Response也一样）的装饰者模式。
+
+```
+public class ServletRequestWrapper implements ServletRequest {
+    private ServletRequest request;//组合抽象接口到自己的类中
+
+	//提供了构造方法允许将被装饰者传入并保存在了类的内部
+    public ServletRequestWrapper(ServletRequest request) {//可以构造自己
+        if(request == null) {
+            throw new IllegalArgumentException("Request cannot be null");
+        } else {
+            this.request = request;
+        }
+    }
+
+	//对于不想改造的方法直接调用已有对象上的方法, 对于想要改造的方法直接进行改造(没有对任何方法进行改造)
+    public ServletRequest getRequest() {
+        return this.request;
+    }
+
+    public void setRequest(ServletRequest request) {
+        if(request == null) {
+            throw new IllegalArgumentException("Request cannot be null");
+        } else {
+            this.request = request;
+        }
+    }
+   //省略...
+}
+
+```
+HttpServletRequestWrapper类继承了ServletRequestWrapper装饰类类, 所以HttpServletRequestWrapper也是一个装饰类!!
+
+HttpServletRequestWrapper类没有直接去包装request对象, 而是先将当前构造方法中的request对象传给父类(ServletRequestWrapper), 让父类进行包装, 再继承父类中包装后的方法。 
+
+而对于自身独有的方法, 自己再进行包装： 通过父类提供的方法(super.getRequest()) 获取 包装后的request对象, 并强制转型为 HttpServletRequest, 并通过提供 _getHttpServletRequest 方法, 方便在当前类的内部使用, 代码如下:  
+
+3:Spring Cache中的TransactionAwareCacheDecorator的装饰者模式。
+
+```
+public class TransactionAwareCacheDecorator implements Cache {
+    private final Cache targetCache;//把Cache组合到自己类中
+
+    public TransactionAwareCacheDecorator(Cache targetCache) {//通过Cache构造自己
+        Assert.notNull(targetCache, "Target Cache must not be null");
+        this.targetCache = targetCache;
+    }
+
+    public <T> T get(Object key, Class<T> type) {
+        return this.targetCache.get(key, type);
+    }
+
+    public void put(final Object key, final Object value) {
+        // 判断是否开启了事务
+        if (TransactionSynchronizationManager.isSynchronizationActive()) {
+            // 将操作注册到 afterCommit 阶段
+            TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
+                public void afterCommit() {
+                    TransactionAwareCacheDecorator.this.targetCache.put(key, value);
+                }
+            });
+        } else {
+            this.targetCache.put(key, value);
+        }
+    }
+    // ...省略...
+}
+```
+
+[讲解](http://laijianfeng.org/2018/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8/)
+
+![](https://www.runoob.com/wp-content/uploads/2014/08/decorator_pattern_uml_diagram.jpg)
+- 装饰者模式代码::[AdapterDemo](https://github.com/Zhukqian/GOF/blob/master/src/main/java/Decorator/DecoratorPatternDemo.java)
+
+
+###  8. 组合模式
+
+
 
 
 
